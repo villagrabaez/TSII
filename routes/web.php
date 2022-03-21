@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,10 +18,10 @@ Route::get('/', function () {
     return "Proyecto TSII";
 });
 
-Route::get('/usuarios', function () {
-    return "Lista de usuarios";
-});
+// Route::get('/usuarios', [UserController::class, 'index']);
 
-Route::get('/usuarios/crear', function () {
-    return "Crear nuevo usuario";
-});
+// Route::get('/usuarios/crear', function () {
+//     return "Crear nuevo usuario";
+// });
+
+Route::resource('/usuarios', UserController::class);
