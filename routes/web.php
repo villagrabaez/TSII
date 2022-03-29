@@ -24,4 +24,4 @@ Route::get('/', function () {
 //     return "Crear nuevo usuario";
 // });
 
-Route::resource('/usuarios', UserController::class);
+Route::resource('/usuarios', UserController::class)->names('usuarios');
