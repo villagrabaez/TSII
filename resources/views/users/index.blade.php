@@ -7,7 +7,7 @@
     <div class="card-head">
       <div class="p-3">
         Sistema de gestion de usuarios.
-        <a class="btn btn-md btn-success float-right">Agregar usuario</a>
+        <a class="btn btn-md btn-success float-right" href="{{ route('usuarios.create') }}">Agregar usuario</a>
       </div>
     </div>
     <div class="card-body">
