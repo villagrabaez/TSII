@@ -18,6 +18,7 @@
             <th scope="col">Nombre</th>
             <th scope="col">Email</th>
             <th scope="col">Fecha de creacion</th>
+            <th scope="col">Operaciones</th>
           </tr>
         </thead>
         <tbody>
@@ -27,6 +28,11 @@
               <td>{{ $user->name }}</td>
               <td>{{ $user->email }}</td>
               <td>{{ $user->created_at }}</td>
+              <td>
+                  <a href="#">Show</a>
+                  <a href="{{ route('usuarios.edit', $user->id) }}">Edit</a>
+                  <a href="#">Delete</a>
+              </td>
             </tr>
           @endforeach
         </tbody>

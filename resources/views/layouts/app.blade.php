@@ -55,7 +55,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item {{ setActive('usuarios.index') }}">
+            <li class="nav-item {{ setActive('usuarios.*') }}">
               <a class="nav-link" href="{{ route('usuarios.index') }}">Usuarios</a>
             </li>
             <li class="nav-item {{ setActive('productos.index') }}">
