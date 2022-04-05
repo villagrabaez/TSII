@@ -55,8 +55,17 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
+            <li class="nav-item {{ setActive('usuarios.index') }}">
               <a class="nav-link" href="{{ route('usuarios.index') }}">Usuarios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Productos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Categorias</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Clientes</a>
             </li>
           </ul>
           {{-- <form class="form-inline mt-2 mt-md-0">
@@ -69,6 +78,13 @@
   <!-- Begin page content -->
     <main role="main" class="flex-shrink-0">
       <div class="container">
+
+        @if ( session('message') )
+          <div class="alert alert-success mt-3">
+            {{ session('message') }}
+          </div>
+        @endif
+
         @yield('content')
       </div>
     </main>

@@ -7,7 +7,7 @@
     <div class="card-head">
       <div class="p-3">
         Sistema de gestion de usuarios.
-        <a class="btn btn-md btn-success float-right">Agregar usuario</a>
+        <a class="btn btn-md btn-success float-right" href="{{ route('usuarios.create') }}">Agregar usuario</a>
       </div>
     </div>
     <div class="card-body">
@@ -18,6 +18,7 @@
             <th scope="col">Nombre</th>
             <th scope="col">Email</th>
             <th scope="col">Fecha de creacion</th>
+            <th scope="col">Operaciones</th>
           </tr>
         </thead>
         <tbody>
@@ -27,6 +28,11 @@
               <td>{{ $user->name }}</td>
               <td>{{ $user->email }}</td>
               <td>{{ $user->created_at }}</td>
+              <td>
+                <a href="#">Ver</a>
+                <a href="#">Editar</a>
+                <a href="#">Eliminar</a>
+              </td>
             </tr>
           @endforeach
         </tbody>
