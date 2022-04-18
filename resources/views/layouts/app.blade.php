@@ -62,6 +62,32 @@
               <a class="nav-link" href="#">Productos</a>
             </li>
           </ul>
+
+          <ul class="navbar-nav mt-md-0">
+            @guest
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('login') }}">Entrar</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('register') }}">Registrarse</a>
+              </li>
+            @endguest
+
+            @auth
+            <li class="nav-item">
+              <a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                Salir
+              </a>
+
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none">
+                @csrf
+              </form>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link">{{ auth()->user()->name }}</a>
+            </li>
+            @endauth
+          </ul>
           {{-- <form class="form-inline mt-2 mt-md-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

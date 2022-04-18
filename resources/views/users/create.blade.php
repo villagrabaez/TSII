@@ -4,7 +4,9 @@
     <h1 class="mt-3">Crear nuevo usuario.</h1>
 
     <form action="{{ route('usuarios.store') }}" method="POST">
+
         @csrf
+
         <div class="form-group">
             <label for="nombre">Nombre</label>
             <input type="text" class="form-control" id="nombre" name="name" value="{{ old('name') }}">
