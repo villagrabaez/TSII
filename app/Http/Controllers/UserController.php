@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateRequest;
 
 class UserController extends Controller
 {
@@ -35,15 +37,13 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|unique:users,email',
-            'password' => 'required',
+        User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => bcrypt( $request['password'] ),
         ]);
-
-        User::create($request->all());
 
         return redirect()->route('usuarios.index')->with('message', 'El usuario se creo correctamente...');
     }
@@ -69,13 +69,11 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        // $user = User::findOrFail($user);
+        $user = User::findOrFail($id);
 
-        // return $user;
-
-        return "Editar usuario";
+        return view('users.edit', compact('user'));
     }
 
     /**
@@ -85,13 +83,19 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UserUpdateRequest $request, $id)
     {
-        // $user = User::save();
+        if($request['password'] != null) {
+            $request['password'] = bcrypt($request['password']);
+        } else {
+            unset($request['password']);
+        }
 
-        // return $user;
+        $user = User::FindOrFail($id);
 
-        return "Actualizar usuario";
+        $user->fill($request->all())->save();
+
+        return redirect()->route('usuarios.index')->with('message', 'El usuario se actualizo correctamente...');
     }
 
     /**
@@ -100,12 +104,12 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        // $user = User::findOrdFail($user);
+        $user = User::findOrFail($id);
 
-        // $user->delete();
+        $user->delete();
 
-        return "Eliminar usuario";
+        return redirect()->route('usuarios.index')->with('message', 'El usuario se elimino correctamente...');
     }
 }

@@ -29,9 +29,13 @@
               <td>{{ $user->email }}</td>
               <td>{{ $user->created_at }}</td>
               <td>
-                <a href="#">Ver</a>
-                <a href="#">Editar</a>
-                <a href="#">Eliminar</a>
+                <a class="btn btn-warning btn-sm" href="#">Ver</a>
+                <a class="btn btn-primary btn-sm" href="{{ route('usuarios.edit', $user->id) }}">Editar</a>
+
+                <form class="d-inline " action="{{ route('usuarios.destroy', $user->id) }}" method="POST">
+                  @csrf @method('DELETE')
+                  <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
+                </form>
               </td>
             </tr>
           @endforeach
