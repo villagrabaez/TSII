@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +25,8 @@ Route::get('/', function () {
 //     return "Crear nuevo usuario";
 // });
 
-Route::resource('/usuarios', UserController::class)->names('usuarios');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('/usuarios', UserController::class)->names('usuarios');
+Route::resource('/categorias', CategoryController::class)->names('categorias');

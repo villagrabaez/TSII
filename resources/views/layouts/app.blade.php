@@ -58,11 +58,11 @@
             <li class="nav-item {{ setActive('usuarios.index') }}">
               <a class="nav-link" href="{{ route('usuarios.index') }}">Usuarios</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Productos</a>
+            <li class="nav-item {{ setActive('categorias.index') }}">
+              <a class="nav-link" href="{{ route('categorias.index') }}">Categorias</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Categorias</a>
+              <a class="nav-link" href="#">Productos</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Clientes</a>

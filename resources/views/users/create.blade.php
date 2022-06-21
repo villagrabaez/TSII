@@ -7,6 +7,8 @@
 
     @csrf
 
+    {{-- input hidden --}}
+
     <div class="form-group">
       <label for="name">Nombre</label>
       <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
