@@ -140,5 +140,8 @@ return [
       'name' => 'nombre',
       'email' => 'correo electronico',
       'password' => 'contraseña',
+      'cost' => 'costo',
+      'price' => 'precio',
+      'category_id' => 'categoria',
     ],
 ];

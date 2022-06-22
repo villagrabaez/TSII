@@ -30,10 +30,13 @@
                 <a class="btn btn-warning btn-sm" href="#">Ver</a>
                 <a class="btn btn-primary btn-sm" href="{{ route('categorias.edit', $category->id) }}">Editar</a>
 
-              <form class="d-inline " action="{{ route('categorias.destroy', $category->id) }}" method="POST">
-                @csrf @method('DELETE')
-                <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
-              </form>
+                @if ( ! $category->products->count() >= 1 )
+                  <form class="d-inline " action="{{ route('categorias.destroy', $category->id) }}" method="POST">
+                    @csrf @method('DELETE')
+                    <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
+                  </form>
+                @endif
+
               </td>
             </tr>
           @endforeach
