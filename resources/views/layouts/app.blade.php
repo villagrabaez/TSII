@@ -64,8 +64,11 @@
             <li class="nav-item {{ setActive('productos.index') }}">
               <a class="nav-link" href="{{ route('productos.index') }}">Productos</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Clientes</a>
+            <li class="nav-item {{ setActive('clientes.index') }}">
+              <a class="nav-link" href="{{ route('clientes.index') }}">Clientes</a>
+            </li>
+            <li class="nav-item {{ setActive('ventas') }}">
+              <a class="nav-link" href="{{ route('ventas') }}">Ventas</a>
             </li>
           </ul>
 
